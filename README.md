@@ -1,4 +1,4 @@
-# Assistente de Ponto — Grupo RBS
+# Assistente de Ponto
 
 Calculadora de horários de trabalho com alertas automáticos. Informe seu horário de entrada e o app calcula automaticamente quando você pode sair, quando começa a hora extra irregular e qual é o horário mínimo de entrada no dia seguinte.
 
