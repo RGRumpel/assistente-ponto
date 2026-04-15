@@ -9,6 +9,8 @@
 <link rel="icon" id="favicon" type="image/png"/>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
+::-webkit-scrollbar { display:none; }
+* { scrollbar-width:none; }
 :root {
   --bg:#0f172a; --surface:#1e293b; --border:#334155;
   --text:#f1f5f9; --muted:#94a3b8; --accent:#6366f1; --accent-light:#c7d2fe;
@@ -59,7 +61,7 @@ body {
   padding:60px 16px 20px;
 }
 @media (max-width:600px) {
-  body { padding-top:20px; }
+  body { padding-top:80px; transition:padding-top .3s ease; }
 }
 .card {
   background:var(--surface); border-radius:20px;
@@ -164,7 +166,7 @@ hr { border:none; border-top:1px solid var(--border); margin:8px 0; }
   <b style="color:var(--green)">Instalar como app:</b>
   <span class="tip-desktop">No Chrome, clique em ⋮ → <b>Salvar e compartilhar</b> → <b>Criar atalho</b> → marque "Abrir como janela"</span>
   <span class="tip-mobile" style="display:none">No Safari: compartilhar → <b>Adicionar à Tela de Início</b></span>
-  <button class="tip-close" onclick="document.getElementById('tip-bar').style.display='none'">✕</button>
+  <button class="tip-close" onclick="document.getElementById('tip-bar').style.display='none';document.body.style.paddingTop=''">✕</button>
 </div>
 
 <div class="card">
