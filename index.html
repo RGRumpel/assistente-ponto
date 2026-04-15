@@ -61,7 +61,7 @@ body {
   padding:60px 16px 20px;
 }
 @media (max-width:600px) {
-  body { padding-top:80px; transition:padding-top .3s ease; }
+  body { transition:padding-top .3s ease; }
 }
 .card {
   background:var(--surface); border-radius:20px;
@@ -166,7 +166,7 @@ hr { border:none; border-top:1px solid var(--border); margin:8px 0; }
   <b style="color:var(--green)">Instalar como app:</b>
   <span class="tip-desktop">No Chrome, clique em ⋮ → <b>Salvar e compartilhar</b> → <b>Criar atalho</b> → marque "Abrir como janela"</span>
   <span class="tip-mobile" style="display:none">No Safari: compartilhar → <b>Adicionar à Tela de Início</b></span>
-  <button class="tip-close" onclick="document.getElementById('tip-bar').style.display='none';document.body.style.paddingTop=''">✕</button>
+  <button class="tip-close" onclick="fecharTip()">✕</button>
 </div>
 
 <div class="card">
@@ -461,7 +461,23 @@ function gerarFavicon(){
   document.getElementById("favicon").href=c.toDataURL("image/png")
 }
 
+function ajustarPadding(){
+  const tip=document.getElementById("tip-bar")
+  if(tip && tip.offsetParent!==null){
+    document.body.style.paddingTop=tip.offsetHeight+"px"
+  }
+}
+
+function fecharTip(){
+  const tip=document.getElementById("tip-bar")
+  tip.style.display="none"
+  document.body.style.paddingTop=""
+}
+
+window.addEventListener("resize", ajustarPadding)
+
 window.addEventListener("load",()=>{
+  ajustarPadding()
   const n=new Date()
   document.getElementById("entrada-h").value=String(n.getHours()).padStart(2,"0")
   document.getElementById("entrada-m").value=String(n.getMinutes()).padStart(2,"0")
