@@ -13,13 +13,13 @@ Calculadora de horários de trabalho com alertas automáticos. Informe seu horá
 1. Abra o app pelo endereço abaixo no Chrome
 2. O campo **Entrada** já vem preenchido com o horário atual — ajuste se necessário
 3. O app mostra imediatamente três horários:
-   - ✅ **Pode sair a partir de** — horário mínimo para encerrar o expediente
-   - ⚠️ **HE irregular começa às** — não ultrapasse este horário
-   - 🌙 **Entrada permitida amanhã** — horário mais cedo que você pode entrar no dia seguinte
+   - **Pode sair a partir de** — horário mínimo para encerrar o expediente
+   - **HE irregular começa às** — não ultrapasse este horário
+   - **Entrada permitida amanhã** — horário mais cedo que você pode entrar no dia seguinte
 
 ## Alertas automáticos
 
-Clique em **Ativar alertas** para receber notificações nos momentos críticos:
+Clique em **Ativar alertas automáticos** para receber notificações nos momentos críticos:
 
 - 30 minutos antes de poder sair
 - Na hora exata de saída
@@ -28,21 +28,23 @@ Clique em **Ativar alertas** para receber notificações nos momentos críticos:
 - No limite de HE irregular
 - No horário de interjornada
 
-Ative também o **Lembrete de hora em hora** para receber um resumo dos três horários a cada hora.
+Ative também os lembretes opcionais:
+- **Lembrar de hora em hora** — resumo dos horários a cada 1h
+- **Lembrar 5 min antes** — aviso antecipado antes de cada etapa
 
 ## Instalar como aplicativo no Chrome (recomendado)
 
 Para usar sem abrir o navegador, instale o app direto no seu computador:
 
 1. Acesse o endereço do app no Chrome
-2. Na barra de endereços, clique no ícone **⊕** (Instalar app) no canto direito
-3. Clique em **Instalar**
-4. O app aparecerá na sua área de trabalho e na barra de tarefas como um aplicativo normal
+2. Clique em **⋮** → **Salvar e compartilhar** → **Criar atalho**
+3. Marque **Abrir como janela** e confirme
+4. O app aparecerá na sua área de trabalho como um aplicativo normal
 
-> Os alertas só funcionam corretamente quando o app está instalado ou aberto via HTTPS.
+> Os alertas só funcionam corretamente quando o app está aberto via HTTPS.
 
 ## Endereço
 
 ```
-https://rbsdev.gitlab.rbs.com.br/assistente-ponto
+https://rgrumpel.github.io/assistente-ponto
 ```
