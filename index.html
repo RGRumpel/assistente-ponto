@@ -23,6 +23,7 @@ html { background:var(--bg); }
   padding:10px 44px; font-size:13px; color:#a5b4fc;
   display:flex; align-items:center; justify-content:center; gap:6px; line-height:1.4;
   backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  white-space:nowrap; overflow:hidden;
 }
 .tip-bar b { color:var(--accent-light); }
 .tip-close {
@@ -30,6 +31,7 @@ html { background:var(--bg); }
   background:none; border:none; color:var(--accent); font-size:16px;
   cursor:pointer; line-height:1; padding:0 4px;
 }
+@media (max-width: 600px) { .tip-bar { display:none; } }
 
 /* ── Overlay de alerta visual (fallback) ── */
 .flash-overlay {
@@ -51,6 +53,9 @@ body {
   display:flex; align-items:center; justify-content:center;
   font-family:'Segoe UI',system-ui,sans-serif; color:var(--text);
   padding:60px 16px 20px;
+}
+@media (max-width:600px) {
+  body { padding-top:20px; }
 }
 .card {
   background:var(--surface); border-radius:20px;
@@ -369,20 +374,24 @@ function tick(){
 
 async function ativarAlertas(){
   if(eMin===null) return
-  // Tenta pedir permissão; se já negada, segue com fallback visual
-  let perm=Notification.permission
-  if(perm==="default") perm=await Notification.requestPermission().catch(()=>"denied")
 
+  // Ativa imediatamente — alertas visuais funcionam sem permissão
   alertas=true
   document.getElementById("as").style.display="flex"
+  reagendar()
+  alerta("🕐","","Alertas ativados!",`✅ Saída: ${fmt(sMin)}\n⚠️ HE irregular: ${fmt(hMin)}\n🌙 Entrada amanhã: ${fmt(iMin)}`)
 
-  if(perm!=="granted"){
+  // Tenta pedir permissão para notificações do sistema (opcional)
+  try {
+    if(typeof Notification!=="undefined" && Notification.permission==="default"){
+      await Notification.requestPermission()
+    }
+    if(typeof Notification==="undefined" || Notification.permission!=="granted"){
+      document.getElementById("notif-blocked").style.display="flex"
+    }
+  } catch(e) {
     document.getElementById("notif-blocked").style.display="flex"
   }
-
-  reagendar()
-  // Alerta de confirmação imediato
-  alerta("🕐","","Alertas ativados!",`✅ Saída: ${fmt(sMin)}\n⚠️ HE irregular: ${fmt(hMin)}\n🌙 Entrada amanhã: ${fmt(iMin)}`)
 }
 
 function testarAgora(){
