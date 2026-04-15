@@ -31,7 +31,11 @@ html { background:var(--bg); }
   background:none; border:none; color:var(--accent); font-size:16px;
   cursor:pointer; line-height:1; padding:0 4px;
 }
-@media (max-width: 600px) { .tip-bar { display:none; } }
+@media (max-width:600px) {
+  .tip-bar { font-size:11px; padding:8px 36px; white-space:normal; text-align:center; flex-wrap:wrap; }
+  .tip-desktop { display:none !important; }
+  .tip-mobile  { display:inline !important; }
+}
 
 /* ── Overlay de alerta visual (fallback) ── */
 .flash-overlay {
@@ -156,7 +160,10 @@ hr { border:none; border-top:1px solid var(--border); margin:8px 0; }
 
 <!-- Barra de dica -->
 <div class="tip-bar" id="tip-bar">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--green)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> <b style="color:var(--green)">Instalar como app:</b> No Chrome, clique em ⋮ → <b>Salvar e compartilhar</b> → <b>Criar atalho</b> → marque "Abrir como janela"
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--green)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <b style="color:var(--green)">Instalar como app:</b>
+  <span class="tip-desktop">No Chrome, clique em ⋮ → <b>Salvar e compartilhar</b> → <b>Criar atalho</b> → marque "Abrir como janela"</span>
+  <span class="tip-mobile" style="display:none">No Safari: compartilhar → <b>Adicionar à Tela de Início</b></span>
   <button class="tip-close" onclick="document.getElementById('tip-bar').style.display='none'">✕</button>
 </div>
 
